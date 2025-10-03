@@ -15,11 +15,11 @@ function Cell({ value, onClick, winning, finish }) {
                 ? "cursor-not-allowed opacity-60"
                 : "hover:bg-gray-700 cursor-pointer"
         }
-        ${winning ? "bg-green-600 animate-pulse" : "bg-gray-800"}
+        ${winning ? "bg-green-400 animate-pulse" : "bg-gray-800"}
         ${!value && !disabled ? "hover:border-blue-500" : ""}`}
         >
-            {value === "X" && <X className="w-12 h-12 text-blue-400" />}
-            {value === "O" && <Circle className="w-12 h-12 text-red-400" />}
+            {value === "X" && <X className="w-12 h-12 text-blue-500" />}
+            {value === "O" && <Circle className="w-12 h-12 text-red-500" />}
         </button>
     );
 }

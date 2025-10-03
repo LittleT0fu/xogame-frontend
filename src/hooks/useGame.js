@@ -23,6 +23,9 @@ export const useGame = () => {
             setLoading(true);
             clearError();
             try {
+                if (gameState) {
+                    await cancelGame();
+                }
                 console.log(boardSize, vsAI, firstPlayer);
                 const res = await gameApi.startGame({
                     boardSize: boardSize,
@@ -89,6 +92,9 @@ export const useGame = () => {
         setLoading(true);
         clearError();
         try {
+            if (!gameState) {
+                return;
+            }
             const res = await gameApi.cancelGame(gameState?.gameID);
             setGameState(null);
             return res;

@@ -29,7 +29,6 @@ function App() {
                         gameState={gameState}
                         onStartGame={startGame}
                         onCancelGame={cancelGame}
-                        onGetHistory={getHistory}
                         loading={loading}
                     />
                 </div>

@@ -1,13 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function GameControls({
-    gameState,
-    onStartGame,
-    onCancelGame,
-    onGetHistory,
-    onClearError,
-}) {
+function GameControls({ gameState, onStartGame, onCancelGame, onClearError }) {
     const [boardSize, setBoardSize] = useState(3);
     const [vsAi, setVsAi] = useState(false);
     const [firstPlayer, setFirstPlayer] = useState("X");
@@ -37,7 +31,7 @@ function GameControls({
                     </div>
                 </div>
             )}
-            {gameState && (
+            {gameState && gameState.status === "IN_PROGRESS" && (
                 <div className="flex flex-row gap-2">
                     <label>Current Player : </label>
                     <div className="flex flex-row items-center gap-2">
@@ -45,13 +39,24 @@ function GameControls({
                     </div>
                 </div>
             )}
+            {gameState && gameState.status === "X_WIN" && (
+                <div className="flex flex-row gap-2">
+                    <label>Winner : </label>
+                    <div className="flex flex-row items-center gap-2">
+                        <label>X</label>
+                    </div>
+                </div>
+            )}
+
             <hr className="dark:bg-gray-500 bg-gray-800 w-full" />
-            <div>
+            <div className="flex flex-row gap-2">
                 <button
                     className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
-                    onClick={() => onStartGame(boardSize, vsAi, firstPlayer)}
+                    onClick={() => {
+                        onStartGame(boardSize, vsAi, firstPlayer);
+                    }}
                 >
-                    Start Game
+                    {gameState ? "New Game" : "Start Game"}
                 </button>
                 {gameState && (
                     <button
