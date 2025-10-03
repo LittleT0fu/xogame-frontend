@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import gameApi from "../api/gameApi";
 import { useCallback } from "react";
+import toast from "react-hot-toast";
 
 export const useGame = () => {
     const [gameState, setGameState] = useState(null);
@@ -11,7 +12,7 @@ export const useGame = () => {
     const handleError = useCallback((error) => {
         const errorMessage = error.message || "An error occurred";
         setError(errorMessage);
-        console.error("Game Error : ", error);
+        toast.error(errorMessage);
     }, []);
 
     const clearError = useCallback(() => {
@@ -34,6 +35,7 @@ export const useGame = () => {
                 });
                 console.log(res);
                 setGameState(res);
+                toast.success("Game started!");
                 return res;
             } catch (error) {
                 handleError(error);
@@ -60,14 +62,9 @@ export const useGame = () => {
                 handleError(new Error("Game is not in progress"));
                 return null;
             }
-            // if (gameState.board[col][row] !== "") {
-            //     handleError(new Error("Cell already occupied"));
-            //     return null;
-            // }
 
             setLoading(true);
             clearError();
-            console.log("before fetch");
             try {
                 const res = await gameApi.makeMove({
                     gameID: gameState.gameID,
@@ -76,7 +73,6 @@ export const useGame = () => {
                     player: gameState.currentPlayer,
                 });
                 setGameState(res);
-                console.log(res);
                 return res;
             } catch (error) {
                 handleError(error);
@@ -97,6 +93,7 @@ export const useGame = () => {
             }
             const res = await gameApi.cancelGame(gameState?.gameID);
             setGameState(null);
+            toast.success("Game cancelled!");
             return res;
         } catch (error) {
             handleError(error);
