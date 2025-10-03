@@ -49,10 +49,9 @@ class GameApiService {
     }
 
     // Cancel the current game
-    async cancelGame(gameId) {
-        return this.request("/game/cancel", {
+    async cancelGame(gameID) {
+        return this.request("/game/cancle/" + gameID, {
             method: "POST",
-            body: JSON.stringify(gameId ? { gameId } : {}),
         });
     }
 
