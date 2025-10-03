@@ -49,6 +49,7 @@ This will install all required packages including:
 -   Vite 7
 -   Tailwind CSS 4
 -   Lucide React (for icons)
+-   Hot Toast
 -   And other dev dependencies
 
 ### 3. Configure Environment Variables (Optional)
@@ -66,38 +67,6 @@ npm run dev
 ```
 
 The application will start on `http://localhost:5173` (or another port if 5173 is busy). Open this URL in your browser to play the game.
-
-## 📦 Available Scripts
-
--   **`npm run dev`** - Starts the development server with hot reload
-
-## 🏗️ Project Structure
-
-```
-xogame-frontend/
-├── src/
-│   ├── api/
-│   │   └── gameApi.js          # API service for backend communication
-│   ├── components/
-│   │   ├── Board.jsx           # Game board component
-│   │   ├── Cell.jsx            # Individual cell component
-│   │   ├── GameControls.jsx   # Game control buttons
-│   │   └── HistoryControls.jsx # History panel
-│   ├── hooks/
-│   │   └── useGame.jsx         # Custom hook for game logic
-│   ├── utils/
-│   │   ├── Constant.jsx        # Constants and configurations
-│   │   └── FormatDate.jsx      # Date formatting utilities
-│   ├── App.jsx                 # Main application component
-│   ├── App.css                 # App-specific styles
-│   ├── main.jsx                # Application entry point
-│   └── index.css               # Global styles
-├── public/                     # Static assets
-├── index.html                  # HTML template
-├── package.json                # Project dependencies
-├── vite.config.js             # Vite configuration
-└── README.md                   # This file
-```
 
 ## 🛠️ Technologies Used
 
