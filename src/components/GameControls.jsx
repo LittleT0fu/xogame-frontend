@@ -5,7 +5,6 @@ function GameControls({ gameState, onStartGame, onCancelGame, onClearError }) {
     const [boardSize, setBoardSize] = useState(3);
     const [vsAi, setVsAi] = useState(false);
     const [firstPlayer, setFirstPlayer] = useState("X");
-    console.log(gameState);
     return (
         <div className="flex flex-col items-center gap-5 p-5 dark:bg-[#2d2d2d] bg-gray-200 dark:text-white rounded-lg light:bg-gray-200 light:text-black">
             {!gameState && (

@@ -12,7 +12,7 @@ function Cell({ value, onClick, winning, finish }) {
         transition-all duration-200
         ${
             disabled || finish
-                ? "cursor-not-allowed opacity-60"
+                ? "cursor-not-allowed opacity-90"
                 : "hover:bg-gray-700 cursor-pointer"
         }
         ${winning ? "bg-green-400 animate-pulse" : "bg-gray-800"}

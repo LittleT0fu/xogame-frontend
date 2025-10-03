@@ -1,5 +1,6 @@
 import Board from "./components/Board";
 import GameControls from "./components/GameControls";
+import HistoryControls from "./components/HistoryControls";
 import "./App.css";
 import { useGame } from "./hooks/useGame";
 
@@ -18,9 +19,10 @@ function App() {
     return (
         <>
             <div>
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center gap-5">
                     <div className="text-2xl font-bold mb-20">
-                        Tic Tac Toe Game
+                        <h1>XO Game</h1>
+                        <label className=" text-gray-500">Tic-Tac-Toe</label>
                     </div>
                     {gameState && (
                         <Board gameState={gameState} onCellClick={makeMove} />
@@ -30,6 +32,10 @@ function App() {
                         onStartGame={startGame}
                         onCancelGame={cancelGame}
                         loading={loading}
+                    />
+                    <HistoryControls
+                        history={history}
+                        onGetHistory={getHistory}
                     />
                 </div>
             </div>
