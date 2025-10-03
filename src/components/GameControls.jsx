@@ -47,6 +47,13 @@ function GameControls({ gameState, onStartGame, onCancelGame, onClearError }) {
                     </div>
                 </div>
             )}
+            {gameState && gameState.status === "DRAW" && (
+                <div className="flex flex-row gap-2">
+                    <div className="flex flex-row items-center gap-2">
+                        <label>Draw</label>
+                    </div>
+                </div>
+            )}
 
             <hr className="dark:bg-gray-500 bg-gray-800 w-full" />
             <div className="flex flex-row gap-2">
@@ -62,6 +69,7 @@ function GameControls({ gameState, onStartGame, onCancelGame, onClearError }) {
                     <button
                         className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                         onClick={onCancelGame}
+                        disabled={gameState.status !== "IN_PROGRESS"}
                     >
                         Cancel Game
                     </button>
